@@ -12,11 +12,11 @@
   <img src="https://img.shields.io/badge/Task-Medical%20segmentation-E07A16?style=for-the-badge" alt="Medical image segmentation">
 </p>
 
-GazeLIFT is a trained, gaze-guided medical image segmentation model. It uses expert fixation locations and durations to condition frozen multi-depth DINOv3 features, then combines them with a learnable lifting-wavelet branch and compact decoder.
+GazeLIFT segments polyps and prostate MRI slices using images and gaze fixations. The model combines frozen DINOv3 features, duration-weighted gaze conditioning, learnable lifting wavelets and a trainable decoder.
 
 ## Architecture
 
-The model receives a 512×512 RGB image and gaze fixations. Features from DINOv3 ViT-L/16 blocks 6, 12, 18 and 24 are projected and conditioned through foreground/background prototype contrast. A single learnable lifting-wavelet transform preserves local image structure. The decoder fuses these sources to produce a segmentation logit map.
+The input is a 512×512 RGB image and a set of gaze fixations. Features from DINOv3 ViT-L/16 blocks 6, 12, 18 and 24 are projected and conditioned through foreground/background prototype contrast. A learnable lifting-wavelet branch supplies image features. The decoder combines these inputs to produce a segmentation logit map.
 
 | Component | Configuration |
 | --- | --- |
@@ -33,10 +33,10 @@ Gaze records are required at inference. The model expects four frozen 1024-chann
 
 ```text
 model_code/           Model architecture, data pipeline, training and evaluation code
-docs/                 GitHub Pages source and project visuals
+docs/                 Website source and figures
 ```
 
-## Inspect the model
+## Load the architecture
 
 ```python
 import sys
@@ -48,18 +48,18 @@ model = TransposeCNNGazePyramidDecoder()
 assert sum(p.numel() for p in model.parameters() if p.requires_grad) == 817_993
 ```
 
-The training and evaluation scripts expect prepared feature caches, image files, fixation records and dataset manifests. They intentionally do not train on or evaluate against any data included in this repository.
+Training and evaluation require feature caches, image files, fixation records and dataset manifests. These data are not included.
 
-## GazeLIFT interface
+## Segmentation demo
 
-Try the [live Hugging Face demo](https://huggingface.co/spaces/oussamab2n/GazeLIFT): upload an image or DICOM slice, add fixation points or import gaze records, and inspect the segmentation. It uses the verified trained Kvasir-SEG and NCI-ISBI adapters on ZeroGPU. The [trained weights and manifest](https://huggingface.co/spaces/oussamab2n/GazeLIFT/tree/main/weights) are hosted with the Space.
+The [Hugging Face demo](https://huggingface.co/spaces/oussamab2n/GazeLIFT) accepts images, DICOM slices and fixation records. It runs the trained Kvasir-SEG or NCI-ISBI adapter on ZeroGPU and returns a mask, overlay and gaze prior. The [weights and manifest](https://huggingface.co/spaces/oussamab2n/GazeLIFT/tree/main/weights) are stored in the Space.
 
-The [project website](https://mohammedoussamaben.github.io/GazeLIFT/) explains the method and experiments. This repository hosts the model and training source; the Space hosts the interactive interface and trained adapters.
+The [project website](https://mohammedoussamaben.github.io/GazeLIFT/) contains the method description and experimental results.
 
-## Results at a glance
+## Results
 
-The main configuration achieves **93.35% Dice on Kvasir-SEG** and **89.24% on NCI-ISBI**. Across 15 training runs (seeds 40–54), mean Dice is **93.22 ± 0.44%** and **87.94 ± 0.79%**, respectively (mean ± SD across runs). See the [project website](https://mohammedoussamaben.github.io/GazeLIFT/#results) for the full results and experimental context.
+The main configuration achieves **93.35% Dice on Kvasir-SEG** and **89.24% on NCI-ISBI**. Across 15 training runs (seeds 40–54), mean Dice is **93.22 ± 0.44%** and **87.94 ± 0.79%**, respectively (mean ± SD across runs). Evaluation details are on the [project website](https://mohammedoussamaben.github.io/GazeLIFT/#results).
 
 ## Data and backbone access
 
-Medical datasets, trained adapters and DINOv3 backbone weights are not bundled here. Obtain them under their respective permissions and licenses. Do not redistribute them without authorization.
+Obtain the datasets and DINOv3 backbone separately under their respective access and licensing terms. Trained adapter weights are linked above.
