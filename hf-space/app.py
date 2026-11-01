@@ -59,7 +59,7 @@ with gr.Blocks(title='GazeLIFT') as demo:
             csv_file=gr.File(label='Fixation CSV',file_types=['.csv'],type='filepath')
             units=gr.Radio(['Normalized [0,1]','Native pixels'],value='Normalized [0,1]',label='CSV coordinate units')
             import_button=gr.Button('Import fixation CSV')
-            table=gr.Dataframe(headers=['x','y','duration'],datatype=['number']*3,type='array',value=[],column_count=(3,'fixed'),label='Fixations in native pixels',interactive=True)
+            table=gr.Dataframe(headers=['x','y','duration'],datatype=['number']*3,type='array',value=[],col_count=(3,'fixed'),label='Fixations in native pixels',interactive=True)
             apply_button=gr.Button('Apply table edits')
             run=gr.Button('Segment with trained model',variant='primary')
             status=gr.Markdown('Requires installed trained adapters. CPU inference may take time.')
