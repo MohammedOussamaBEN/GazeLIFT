@@ -1,7 +1,7 @@
 # GazeLIFT
 
 <p align="center">
-  <img src="docs/assets/architecture.png" alt="GazeLIFT architecture" width="100%">
+  <img src="docs/assets/architecture.jpg" alt="GazeLIFT architecture" width="100%">
 </p>
 
 <p align="center">
