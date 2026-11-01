@@ -53,9 +53,9 @@ The training and evaluation scripts expect prepared feature caches, image files,
 
 The separately distributed GazeLIFT Hugging Face interface supports image/DICOM upload, fixation clicks and tabular gaze import. It loads verified Kvasir-SEG and NCI-ISBI trained adapters. Adapter distribution and the live Space are pending.
 
-## Related project
+## Results at a glance
 
-[GazeRefine](https://github.com/MohammedOussamaBEN/GazeRefine) provides a related gaze-guided segmentation framework and interface. GazeLIFT uses a trained adapter with multi-depth semantic conditioning, lifting-wavelet features and a compact decoder. The two methods use different inference architectures and their checkpoints are not interchangeable.
+The main configuration achieves **93.35% Dice on Kvasir-SEG** and **89.24% on NCI-ISBI**. Across 15 training runs (seeds 40–54), mean Dice is **93.22 ± 0.44%** and **87.94 ± 0.79%**, respectively (mean ± SD across runs). See the [project website](https://mohammedoussamaben.github.io/GazeLIFT/#results) for the full results and experimental context.
 
 ## Data and backbone access
 
