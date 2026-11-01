@@ -1,0 +1,47 @@
+{
+  "title": "GazeLIFT: Gaze-Guided Few-Shot Adaptation for Medical Image Segmentation",
+  "authors": [
+    [
+      "Mohammed Oussama Benyahia",
+      1
+    ],
+    [
+      "Marouane Tliba",
+      1
+    ],
+    [
+      "Mohamed Amine Kerkouri",
+      1
+    ],
+    [
+      "Taifour Yousra",
+      1
+    ],
+    [
+      "Bin Wang",
+      2
+    ],
+    [
+      "Zuheng Ming",
+      1
+    ],
+    [
+      "Azeddine Beghdadi",
+      1
+    ],
+    [
+      "Ulas Bagci",
+      2
+    ],
+    [
+      "Aladine Chetouani",
+      1
+    ]
+  ],
+  "status": "ISBI manuscript",
+  "dice": {
+    "kvasir": 93.35,
+    "nci": 89.24
+  },
+  "trainable_parameters": 817993
+}
