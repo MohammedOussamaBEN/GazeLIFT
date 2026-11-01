@@ -6,3 +6,4 @@ numpy>=1.26,<3
 Pillow>=10,<13
 pydicom>=3,<4
 huggingface_hub>=0.34,<2
+safetensors>=0.5,<1

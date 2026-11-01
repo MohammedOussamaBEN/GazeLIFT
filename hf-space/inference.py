@@ -62,8 +62,13 @@ def verified_checkpoint(dataset):
 @lru_cache(maxsize=2)
 def load_adapter(dataset,device):
     path,record=verified_checkpoint(dataset)
-    payload=torch.load(path,map_location='cpu',weights_only=True)
-    model=TransposeCNNGazePyramidDecoder();model.load_state_dict(payload['model'],strict=True)
+    if path.suffix=='.safetensors':
+        from safetensors.torch import load_file
+        state=load_file(str(path),device='cpu')
+    else:
+        payload=torch.load(path,map_location='cpu',weights_only=True)
+        state=payload['model']
+    model=TransposeCNNGazePyramidDecoder();model.load_state_dict(state,strict=True)
     return model.requires_grad_(False).eval().to(device),record
 
 @lru_cache(maxsize=1)
