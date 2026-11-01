@@ -6,3 +6,10 @@ __pycache__/
 .env
 .DS_Store
 output/
+hf-space/
+results/
+tests/
+scripts/
+*.csv
+*.xlsx
+*.xls
