@@ -6,6 +6,7 @@
 
 <p align="center">
   <a href="https://mohammedoussamaben.github.io/GazeLIFT/"><img src="https://img.shields.io/badge/Project%20website-285CE7?style=for-the-badge&logo=googlechrome&logoColor=white" alt="Project website"></a>
+  <a href="https://huggingface.co/spaces/oussamab2n/GazeLIFT"><img src="https://img.shields.io/badge/Live%20demo-FFB144?style=for-the-badge&logo=huggingface&logoColor=17243A" alt="Live Hugging Face demo"></a>
   <img src="https://img.shields.io/badge/Trainable%20parameters-0.818M-168C86?style=for-the-badge" alt="0.818M trainable parameters">
   <img src="https://img.shields.io/badge/Encoder-Frozen%20DINOv3-17243A?style=for-the-badge" alt="Frozen DINOv3">
   <img src="https://img.shields.io/badge/Task-Medical%20segmentation-E07A16?style=for-the-badge" alt="Medical image segmentation">
@@ -51,7 +52,9 @@ The training and evaluation scripts expect prepared feature caches, image files,
 
 ## GazeLIFT interface
 
-The separately distributed GazeLIFT Hugging Face interface supports image/DICOM upload, fixation clicks and tabular gaze import. It loads verified Kvasir-SEG and NCI-ISBI trained adapters. Adapter distribution and the live Space are pending.
+Try the [live Hugging Face demo](https://huggingface.co/spaces/oussamab2n/GazeLIFT): upload an image or DICOM slice, add fixation points or import gaze records, and inspect the segmentation. It uses the verified trained Kvasir-SEG and NCI-ISBI adapters on ZeroGPU. The [trained weights and manifest](https://huggingface.co/spaces/oussamab2n/GazeLIFT/tree/main/weights) are hosted with the Space.
+
+The [project website](https://mohammedoussamaben.github.io/GazeLIFT/) explains the method and experiments. This repository hosts the model and training source; the Space hosts the interactive interface and trained adapters.
 
 ## Results at a glance
 
