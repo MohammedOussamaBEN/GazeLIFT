@@ -32,7 +32,7 @@ Gaze records are required at inference. The model expects four frozen 1024-chann
 ## Repository layout
 
 ```text
-reproduction/seed42/  Original architecture, data pipeline, training and evaluation code
+model_code/           Model architecture, data pipeline, training and evaluation code
 docs/                 GitHub Pages source and project visuals
 ```
 
@@ -40,7 +40,7 @@ docs/                 GitHub Pages source and project visuals
 
 ```python
 import sys
-sys.path.insert(0, "reproduction/seed42")
+sys.path.insert(0, "model_code")
 
 from model import TransposeCNNGazePyramidDecoder
 
