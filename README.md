@@ -2,10 +2,9 @@
 
 **Gaze-Guided Few-Shot Adaptation for Medical Image Segmentation**
 
-Research manuscript for ISBI. This repository contains the project website, supplied paper, archived model implementation and reported experimental tables.
+Gaze-guided medical image segmentation with a frozen DINOv3 encoder and a compact trainable adapter. This repository contains the project website, model implementation, interactive demo source and experimental tables.
 
 - [Project website](https://mohammedoussamaben.github.io/GazeLIFT/)
-- [Paper](docs/assets/gazelift-paper.pdf)
 - [Original model and training source](reproduction/seed42/)
 - [Reported results and 15-run analysis](results/)
 
@@ -15,7 +14,7 @@ Frozen DINOv3 ViT-L/16 features at blocks 6, 12, 18 and 24 are conditioned on du
 
 ## Source status
 
-`reproduction/seed42/` preserves the paper's original implementation and import structure. It is an archived research pipeline, not a turnkey pretrained inference package. Its training/evaluation scripts expect prepared feature-cache manifests and local dataset paths. Read their argument parsers before running. No pretrained adapter checkpoint or medical dataset is included. Do not use random weights as a trained demonstration.
+`reproduction/seed42/` preserves the original implementation and import structure. It is an archived research pipeline, not a turnkey pretrained inference package. Its training/evaluation scripts expect prepared feature-cache manifests and local dataset paths. Read their argument parsers before running. No pretrained adapter checkpoint or medical dataset is included. Do not use random weights as a trained demonstration.
 
 For architecture inspection, install PyTorch and import from the archived directory:
 
@@ -38,8 +37,14 @@ Across seeds 40–54, mean ± SD Dice is **93.22 ± 0.44%** and **87.94 ± 0.79%
 
 ## Website
 
-Serve `docs/` with any static HTTP server, for example `python -m http.server 8000 --directory docs`. GitHub Pages can publish this directory. `hf-space/` contains a static Space version of the research page; it does not perform model inference.
+Serve `docs/` with any static HTTP server, for example `python -m http.server 8000 --directory docs`. GitHub Pages can publish this directory. `hf-space/` contains the Gradio inference application. It requires the dataset-specific verified trained adapters and the separately obtained DINOv3 backbone. See its README for setup.
 
-## Citation and rights
+## Trained-model demo
 
-See [BibTeX](docs/citation.bib). Publication acceptance is not asserted. Third-party datasets, backbone weights and methods retain their own terms. No additional license for manuscript figures or pretrained weights is implied.
+The Gradio application accepts RGB images or individual grayscale DICOM slices, click-based fixations or a CSV fixation file, and returns native-resolution probability maps, masks and overlays. It selects the Kvasir-SEG or NCI-ISBI adapter explicitly. There is no randomly initialized inference fallback.
+
+Adapter checkpoint availability and Hugging Face account access are pending. See `hf-space/weights/manifest.json` for the recorded SHA-256 digests of the original selected adapters. The demo must pass a native-mask comparison against saved reference predictions before it is described as reproducing reported results.
+
+## Rights
+
+Third-party datasets and backbone weights retain their own access and licensing terms. No datasets or backbone weights are redistributed here.

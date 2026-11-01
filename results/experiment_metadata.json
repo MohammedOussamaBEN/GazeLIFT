@@ -1,0 +1,9 @@
+{
+  "title": "GazeLIFT: Gaze-Guided Few-Shot Adaptation for Medical Image Segmentation",
+  "trainable_parameters": 817993,
+  "main_seed": 42,
+  "dice_percent": {
+    "kvasir": 93.35,
+    "prostate": 89.24
+  }
+}
